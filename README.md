@@ -94,7 +94,7 @@ The business wants to identify its most valuable customers and reduce churn amon
 
 ---
 
-## Sample SQL: Handling Mixed Date Formats
+Handling Mixed Date Formats
 
 ```sql
 SELECT
@@ -109,19 +109,10 @@ INTO dbo.RetailCombined
 FROM dbo.[Year 2009-2010];
 ```
 
-## Sample Python: RFM Scoring
+Using Python for RFM Scoring
 
 ```python
 rfm['R_Score'] = pd.qcut(rfm['Recency'], 5, labels=[5, 4, 3, 2, 1]).astype(int)
 rfm['F_Score'] = pd.qcut(rfm['Frequency'].rank(method='first'), 5, labels=[1, 2, 3, 4, 5]).astype(int)
 rfm['M_Score'] = pd.qcut(rfm['Monetary'], 5, labels=[1, 2, 3, 4, 5]).astype(int)
 ```
-
----
-
-## How to Reproduce This Project
-
-1. Download the Online Retail II dataset from the UCI Machine Learning Repository
-2. Run the SQL scripts in `01_sql` in order to recreate the cleaned `RetailCleaned` table
-3. Export `RetailCleaned` to CSV and run the notebook in `02_python` to generate the segmented dataset
-4. Open the Power BI file in `03_powerbi` and point it to the exported Excel file to refresh
